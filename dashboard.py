@@ -105,7 +105,6 @@ else:
         height=500
     )
     st.plotly_chart(fig_platform)
-)
 
 # ---------- Web Frameworks ----------
 st.subheader("Web Frameworks")
