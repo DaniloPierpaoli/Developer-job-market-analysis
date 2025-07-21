@@ -51,6 +51,7 @@ To encapsulate all in a few key points:
   •PostegreSQL seems to assert dominance among databases.
   •Microsoft Azure and AWS currently dominate and will probably keep dominating the platform tech. 
   •Programming languages usage instead seems to be more dynamic andcan change quickly 
-  •Web framework techs seems to have a low concentration in current and future usage, although the current and future short term most used ones are Spring Boot and React.
+  •Web framework techs seems to have a low concentration in current and future usage, 
+  although the current and future short term most used ones are Spring Boot and React.
    
 
