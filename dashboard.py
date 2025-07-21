@@ -51,11 +51,14 @@ lang_df = pd.concat([worked, want, admired], axis=1).fillna(0).astype(int)
 lang_df.columns = ["Worked With", "Want To Work With", "Admired"]
 lang_df = lang_df.head(10)
 
-fig_lang = px.bar(lang_df, x=lang_df.index, y=lang_df.columns,
-                  title="Top 10 Programming Languages",
-                  labels={"value": "Number of Respondents", "index": "Language"},
-                  barmode='group', height=500)
-st.plotly_chart(fig_lang)
+if lang_df.empty or lang_df.sum().sum() == 0:
+    st.info("No data available for programming languages with the selected filters.")
+else:
+    fig_lang = px.bar(lang_df, x=lang_df.index, y=lang_df.columns,
+                      title="Top 10 Programming Languages",
+                      labels={"value": "Number of Respondents", "index": "Language"},
+                      barmode='group', height=500)
+    st.plotly_chart(fig_lang)
 
 # ---------- Databases ----------
 st.subheader("Databases")
@@ -69,14 +72,15 @@ db_df = pd.DataFrame({
     "Admired": db_admired
 }).fillna(0).astype(int)
 
-col1, col2 = st.columns(2)
-with col1:
-    st.plotly_chart(px.pie(db_df, values='Worked With', names=db_df.index, title="Databases Worked With"))
-
-with col2:
-    st.plotly_chart(px.pie(db_df, values='Want To Work With', names=db_df.index, title="Databases Desired"))
-
-st.plotly_chart(px.pie(db_df, values='Admired', names=db_df.index, title="Databases Admired"))
+if db_df.empty or db_df.sum().sum() == 0:
+    st.info("No data available for databases with the selected filters.")
+else:
+    col1, col2 = st.columns(2)
+    with col1:
+        st.plotly_chart(px.pie(db_df, values='Worked With', names=db_df.index, title="Databases Worked With"))
+    with col2:
+        st.plotly_chart(px.pie(db_df, values='Want To Work With', names=db_df.index, title="Databases Desired"))
+    st.plotly_chart(px.pie(db_df, values='Admired', names=db_df.index, title="Databases Admired"))
 
 # ---------- Cloud Platforms ----------
 st.subheader("Cloud Platforms")
@@ -87,12 +91,21 @@ plat_admired = process_tech_column(filtered_df, "PlatformAdmired")
 plat_df = pd.concat([plat_worked, plat_want, plat_admired], axis=1).fillna(0).astype(int).head(10)
 plat_df.columns = ["Worked With", "Want To Work With", "Admired"]
 
-fig_platform = px.bar(plat_df, y=plat_df.index, x=plat_df.columns,
-                      title="Top 10 Cloud Platforms",
-                      orientation='h',
-                      labels={"value": "Number of Respondents", "index": "Platform"},
-                      barmode='stack', height=500)
-st.plotly_chart(fig_platform)
+if plat_df.empty or plat_df.sum().sum() == 0:
+    st.info("No data available for cloud platforms with the selected filters.")
+else:
+    fig_platform = px.bar(
+        plat_df,
+        y=plat_df.index,
+        x=plat_df.columns,
+        title="Top 10 Cloud Platforms",
+        orientation='h',
+        labels={"value": "Number of Respondents", "index": "Platform"},
+        barmode='stack',
+        height=500
+    )
+    st.plotly_chart(fig_platform)
+)
 
 # ---------- Web Frameworks ----------
 st.subheader("Web Frameworks")
@@ -100,14 +113,19 @@ web_worked = process_tech_column(filtered_df, "WebframeHaveWorkedWith")
 web_want = process_tech_column(filtered_df, "WebframeWantToWorkWith")
 web_admired = process_tech_column(filtered_df, "WebframeAdmired")
 
+
+
 web_df = pd.concat([web_worked, web_want, web_admired], axis=1).fillna(0).astype(int).head(10)
 web_df.columns = ["Worked With", "Want To Work With", "Admired"]
 
-fig_web = px.bar(web_df, x=web_df.index, y=web_df.columns,
-                 title="Top 10 Web Frameworks",
-                 labels={"value": "Number of Respondents", "index": "Framework"},
-                 barmode='group', height=500)
-st.plotly_chart(fig_web)
+if web_df.empty or web_df.sum().sum() == 0:
+    st.info("No data available for web frameworks with the selected filters.")
+else:
+    fig_web = px.bar(web_df, x=web_df.index, y=web_df.columns,
+                     title="Top 10 Web Frameworks",
+                     labels={"value": "Number of Respondents", "index": "Framework"},
+                     barmode='group', height=500)
+    st.plotly_chart(fig_web)
 
 st.markdown("---")
 
