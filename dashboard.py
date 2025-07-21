@@ -8,9 +8,23 @@ df = pd.read_csv("survey-data_cleaned.csv", keep_default_na= False)
 # Sidebar filters
 st.sidebar.header("Filter Respondents")
 countries = df['Country'].unique()
+# Get top 20 countries by count
+top_countries = df['Country'].value_counts().nlargest(20).index.tolist()
+
+# Add 'Worldwide' to the top of the list
+countries = ["Worldwide"] + top_countries
+
+# Streamlit select box with 'Worldwide' as default
+selected_country = st.selectbox("Select Country", countries, index=0)
+
+# Filter the dataframe accordingly
+if selected_country != "Worldwide":
+    filtered_df = df[df['Country'] == selected_country]
+else:
+    filtered_df = df.copy()
+
 age_groups = df['Age'].unique()
 
-selected_country = st.sidebar.selectbox("Select Country", sorted(countries))
 selected_ages = st.sidebar.multiselect("Select Age Group(s)", sorted(age_groups), default=sorted(age_groups))
 
 # Filter dataset
