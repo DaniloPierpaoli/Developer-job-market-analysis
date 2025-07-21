@@ -95,7 +95,7 @@ fig_platform = px.bar(plat_df, y=plat_df.index, x=plat_df.columns,
 st.plotly_chart(fig_platform)
 
 # ---------- Web Frameworks ----------
-st.subheader("🕸️ Web Frameworks")
+st.subheader("Web Frameworks")
 web_worked = process_tech_column(filtered_df, "WebframeHaveWorkedWith")
 web_want = process_tech_column(filtered_df, "WebframeWantToWorkWith")
 web_admired = process_tech_column(filtered_df, "WebframeAdmired")
