@@ -25,6 +25,11 @@ if selected_country != "Worldwide":
 else:
     filtered_df = df[df['Age'].isin(selected_ages)]
 
+# handling if filtered_df is empty
+if filtered_df.empty or len(selected_ages) == 0:
+    st.warning("⚠️ No data available for the selected filters. Please adjust the country or age group selections.")
+    st.stop()
+
 # Helper function
 def process_tech_column(df, column_name):
     df = df[df[column_name] != "None"]
