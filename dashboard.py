@@ -27,7 +27,7 @@ else:
 
 # handling if filtered_df is empty
 if filtered_df.empty or len(selected_ages) == 0:
-    st.warning("⚠️ No data available for the selected filters. Please adjust the country or age group selections.")
+    st.warning("No data available for the selected filters. Please choose a country or age group....")
     st.stop()
 
 # Helper function
