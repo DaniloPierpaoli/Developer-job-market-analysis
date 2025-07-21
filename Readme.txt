@@ -22,4 +22,10 @@ METHODOLOGY
 • The techs listed in the series are counted and bar plots are then created.
 
 
+RESULTS: 
 
+Datasets:
+ -Findings 
+• PostegreSQL is the database most used by respondents and the database they want to work with the most. . We can see an opposite trend in MySQL. SQLite has a larger number of participants that wish to work with than MySQL. Also, Redis seems to be on a growing trend. Overall PostegreSQL seems to become even more dominant than it currently is among respondents. 
+• MySQL is currently the second most used database and it's the number 4 respondents want to work with. 
+• More participants want to work with PostegreSQL and Redis than there are already working with
